@@ -1,0 +1,186 @@
+\documentclass {article}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multicol}
+\usepackage{titlesec}
+\usepackage{titling}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+
+\tolerance=1
+\emergencystretch=\maxdimen{}
+\hyphenpenalty=10000
+\hbadness=10000
+
+\titleformat{\section}{\Large\bfseries\scshape} {\thesection} {1ex} {}
+
+\titleformat{\subsection}{\bfseries} {\thesubsection} {1ex} {}
+
+% Decrease bullet size
+\renewcommand\labelitemi{\tiny$\bullet$}
+
+\newenvironment{tItemize} {
+   \begin{minipage}{0.82\textwidth}
+      \begin{itemize}
+         \setlength{\itemsep}{0pt}
+         \setlength{\topsep}{0pt}
+         \setlength{\partopsep}{0pt}
+         \setlength{\parsep}{0pt}
+         \setlength{\parskip}{0pt}
+         \vspace{-1mm}
+} {\linebreak\end{itemize}\end{minipage}}
+
+\newenvironment{lItemize} {
+   \begin{itemize}%
+      \setlength{\itemsep}{0pt}%
+      \setlength{\topsep}{0pt}
+      \setlength{\partopsep}{0pt}
+      \setlength{\parsep}{0pt}
+      \setlength{\parskip}{0pt}%
+      \vspace{2mm}
+} {\end{itemize}}
+
+\newcommand{\rdate}[1]{\hfill #1}
+\pagenumbering{gobble}
+
+\setlength{\parskip}{0ex}
+
+\setlength\multicolsep{0ex}
+
+\linespread{1.0}
+
+\titlespacing*{\section}
+{0pt}{2ex}{0pt}
+\titlespacing*{\subsection}
+{0pt}{1.5ex}{0pt}
+
+\renewcommand*{\familydefault}{\sfdefault}
+\newcommand{\maintitle}[1]{\section*{\huge #1}}
+\newcommand{\twocol}[2]{%
+   \begin{minipage}[t]{0.5\textwidth}
+      \flushleft{#1}
+   \end{minipage}
+   \begin{minipage}[t]{0.49\textwidth}
+      \flushright{#2}
+   \end{minipage}
+}
+\newcommand{\reed}{Reed College, Portland, Oregon}
+\newcommand{\datedsection}[3]{%
+   \vspace{1mm}
+   \subsection*{#1 \hfill\textmd{#2}}
+   \vspace{1mm}
+   \textit{#3}\\
+   \linebreak
+}%
+\newcommand{\link}[1]{(\textit{#1})}
+\newcommand{\project}[3]{\item \textbf{#1 (#2):} #3}
+\newcommand{\skill}[2]{\item \textbf{#1}: #2}
+
+\begin{document}
+\title{Master Resume}
+
+\maintitle{Fenner Macrae}
+
+\twocol{%
+   fennermacrae@gmail.com\\
+   971--563--2175\\
+   github.com/fennerm
+}%
+{%
+   5107 SE Bybee Blvd, Apt. 4\\
+   Portland, OR 97206\\
+}%
+
+\section*{Education}
+\begin{lItemize}
+\item Reed College, B.A. Biology, Portland, Oregon \rdate{May 2016}
+\end{lItemize}
+
+\section*{Research}
+\datedsection{Lab Manager}{Jul 2017--Present}{\reed}
+\begin{tItemize}
+\item Designed a pipeline for a large-scale genome sequencing project
+   including sequence decontamination, \textit{de novo} genome assembly and
+   variant calling.\\
+   \link{github.com/fennerm/megadaph}
+\item Supervised volunteer scheduling/training and provided technical
+   support for student research.
+
+\end{tItemize}
+
+\datedsection{Research Assistant}{Dec 2016 -- Jul 2017}{\reed}
+\begin{tItemize}
+\item Built a pipeline for variant calling in the mitochondrial genome of
+   \textit{Daphnia}. \link{github.com/fennerm/daphnia-mtdna-ma}
+\item Developed novel statistical technique for high-coverage multisample
+   variant calling which allowed for sensitive detection of low-frequency
+   mutations.
+
+\end{tItemize}
+
+%\datedsection{Summer Undergraduate Research Fellowship}{Jun 2015 -- Aug 2015}%
+%{\reed}
+%\begin{tItemize}
+%\item Independent research on the phenotypic and environmental correlates of
+%   mutation in \textit{Daphnia}.
+%\item Designed a custom pipeline for quality control and genome assembly of next-generation sequencing data.
+%\item Empirically tested the effigacy of many preexisting tools for sequence processing and wrote user-friendly scripts to simplify data analysis.
+%\item Results presented at the Reed Student Summer Research Poster Session.
+%\end{tItemize}
+%
+%\datedsection{Reed College Science Research Fellowship}{Jun 2014 -- Aug 2014}%
+%{\reed}
+%\begin{tItemize}
+%\item Independent research on the role of abstract beliefs and neural oscillations in motor preparation and inhibition.
+%\item Worked without supervision to schedule and collect EEG data from over 30 participants.
+%\item Wrote a program which delivered visual stimuli to participants with extremely high temporal precision and recorded behavioral data.
+%\item Results presented at Cognitive Neuroscience Society (2014) and Oregon Academy of Sciences (2014).
+%\end{tItemize}
+%
+%\datedsection{Volunteer Research Assistant}{Feb 2014 -- Dec 2014}{\reed}
+%\begin{tItemize}
+%\item Worked on an ongoing project to determine the genetic basis for
+%   differences in light color preference in fruit flies.
+%\item Project included researching potential genes of interest, sorting flies
+%   by sex and running them through a light-preference assay.
+%\item Meticulous attention to detail required to keep fly stocks organized
+%   and experimental conditions consistent.
+%\end{tItemize}
+%
+%\datedsection{Volunteer Research Assistant}{Nov 2013 -- Jun 2014}{\reed}
+%\begin{tItemize}
+%\item Assisted in electroencephalography research on cognition.
+%\item Placed caps on participants, explained procedures and used analysis
+%   software.
+%\end{tItemize}
+
+\section*{Projects}
+\project{pmultinom}{R, C++} {R package for computing the multinomial
+cumulative distribution function. \\\link{github.com/fennerm/pmultinom}}
+\project{i3restore}{Python} {Workspace layout save/restore for the i3
+window manager. \\\link{github.com/fennerm/i3restore}}
+
+\section*{Skills}
+\skill{Languages/Frameworks} {Python (biopython), R (bioconductor, dplyr,
+data.table, parallel, ggplot2), Bash, C++, Rmarkdown, LaTex, Microsoft Excel, Microsoft Word}
+\skill{Bioinformatics}{Pipeline development (Snakemake), next-generation
+   and Sanger sequence analysis, HPC cluster scheduling, genome assembly,
+variant calling, sequence decontamination}
+\skill{Programming}{Git version control, test-driven development, HPC cluster
+scheduling, object oriented and functional programming, package development}
+
+\section*{Academic Honors \& Awards}
+\begin{lItemize}
+\item National Science Foundation S-STEM scholarship, 2013--2016, nominated
+   by the Reed College faculty (2013--2016)
+\item Divisional commendation, 2013--2016.
+\item Summer Undergraduate Research Fellowship (2015)
+\item Reed College Science Research Fellowship (2014)
+\end{lItemize}
+
+\section*{Selected Presentations}
+\begin{lItemize}
+\item{\textit{Direct estimate of intra - and interspecific variation in the
+      rate and spectrum of mitochondrial mutation in the genus Daphnia}
+   - Evolution, 2017}
+\end{lItemize}
+\end{document}
